@@ -7,7 +7,7 @@ interface UrlRecipeParams {
   };
 }
 
-async function getRecipeById(id: number) {
+async function getRecipeFromId(id: number) {
   // 1 adalah parameter func getRecipeById
   const res = await fetch(`https://dummyjson.com/recipes/${id}`); // 123 => undefined
   if (!res.ok) return null;
@@ -21,7 +21,7 @@ async function getRecipeById(id: number) {
 }
 
 export default async function page({ params }: UrlRecipeParams) {
-  const recipeData = await getRecipeById(params.id); // 123 => null
+  const recipeData = await getRecipeFromId(params.id); // 123 => null
 
   if (!recipeData) {
     return <NotFound />;
